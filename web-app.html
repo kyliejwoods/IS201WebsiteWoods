@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Serve Speed Predictor</title>
+    <style>
+        /* --- CSS Styling (No Bootstrap Allowed) --- */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light Blue Background */
+            color: #01579b; /* Dark Blue Text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 450px;
+        }
+        h1 {
+            text-align: center;
+            color: #00bcd4; /* Cyan Accent */
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0097a7;
+        }
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border: 2px dashed #00bcd4;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #01579b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Serve Speed Predictor</h1>
+
+        <label for="height">Your Height (in inches):</label>
+        <input type="number" id="height">
+
+        <label for="experience">Experience Level:</label>
+        <select id="experience">
+            <option value="" disabled selected>Select Experience Level</option>
+            <option value="beginner">Beginner (1-2 years)</option>
+            <option value="intermediate">Intermediate (3-5 years)</option>
+            <option value="advanced">Advanced (6+ years / Instructor)</option>
+        </select>
+        
+        <label for="age">Age (for maturity factor):</label>
+        <input type="number" id="age">
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <button onclick="predictSpeed()">Predict Max Serve Speed</button>
+
+        <div id="result">
+            Enter your details and click 'Predict'
+        </div>
+
+        <a href="scratch.html" class="nav-link">← Back to the Scratch Page</a>
+    </div>
+
+    <script>
+        /* --- JavaScript Logic (To be filled in Step 5B) --- */
+        function predictSpeed() {
+            // This function will contain the calculation logic
+            const height = document.getElementById('height').value;
+            const experience = document.getElementById('experience').value;
+            const age = document.getElementById('age').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Basic validation
+            if (!height || !age || height <= 0 || age <= 0) {
+                resultDiv.innerHTML = "Please enter valid height and age.";
+                return;
+            }
+            
+            // Base speed based on height (feet * 10, then adjusted, rough estimate)
+        // Convert inches to a base speed (e.g., 68 inches = 5.67 ft)
+        const baseSpeed = (height / 12) * 15 + 40; // Starts around 60-70 MPH for an average person
+
+        // 1. Adjust for Experience Level
+        let experienceFactor = 1.0;
+        switch (experience) {
+            case 'beginner':
+                experienceFactor = 1.0; 
+                break;
+            case 'intermediate':
+                experienceFactor = 1.15; // 15% increase
+                break;
+            case 'advanced':
+                experienceFactor = 1.30; // 30% increase (reflecting your instructor level)
+                break;
+        }
+
+        // 2. Adjust for Age (Maturity/Strength Factor)
+        let ageFactor = 1.0;
+        if (age < 16) {
+            ageFactor = 0.9; 
+        } else if (age >= 16 && age <= 25) {
+            ageFactor = 1.1; // Peak strength years
+        }
+        // 3. Combine Factors to get the final estimated speed
+        let predictedSpeed = baseSpeed * experienceFactor * ageFactor;
+
+        // 4. Create a range (for realism, no one can predict exactly)
+        const lowEnd = Math.round(predictedSpeed * 0.95);
+        const highEnd = Math.round(predictedSpeed * 1.05);
+
+        // 5. Display the result
+        resultDiv.innerHTML = `
+            Based on your inputs, your maximum flat serve speed is estimated to be between: 
+            <br>
+            <strong>${lowEnd} MPH</strong> and <strong>${highEnd} MPH</strong>.
+        `; 
+        }
+    </script>
+</body>
+</html>

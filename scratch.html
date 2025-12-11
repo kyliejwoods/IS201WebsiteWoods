@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple From-Scratch Page</title>
+    <link rel="stylesheet" href="css/custom-scratch.css">
+</head>
+<body>
+
+    <div id="navigation-bar">
+        <a href="index.html">Professional Site</a> |
+        <a href="web-app.html">AI Web App</a>
+    </div>
+
+    <div id="main-content">
+        <h1>Learn More About My Passions!</h1>
+        <p>I enjoy spending time with the people I love and staying active.</p>
+        <p><a href="#data-graph" style="font-weight: bold; color: #007bff;">Click here to jump straight to the interactive data graph!</a></p>
+        <h3>My Top Three Passions</h3>
+<ol>
+    <li>Tennis
+        <ul>
+            <li>Coaching others of all ages and levels</li>
+            <li>2 time doubles High School State Champion</li>
+            <li>Going to play with my husband and family</li>
+        </ul>
+    </li>
+    <li>Travel
+        <ul>
+            <li>Bolivia, where I served my mission</li>
+            <li>Going to Moab with our RZR</li>
+            <li>Anywhere that has a beach!</li>
+    <h3>Photo of Me in Bolivia</h3>
+<img 
+    src="assets/img/Bolivia.JPG" 
+    alt="Photo of Me in Bolivia" 
+    style="
+        max-width: 50%; 
+        height: auto;
+        display: block
+        margin: 20px auto;
+        "
+/>
+        </ul>
+    </li>
+    <li>My Family
+        <ul>
+            <li>Laughing with my Husband</li>
+            <li>Playing games with my 3 younger siblings</li>
+            <li>Talking with my Parents</li>
+        </ul>
+    </li>
+</ol>
+<h3>Iconic Federer vs Nadal Points</h3>
+<div>
+    <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/C_ea3U5qQRs"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+</div>
+
+</div>
+<h3 id="data-graph">Interactive Global Data Visualization: World Airports</h3> 
+
+<div class='tableauPlaceholder' id='viz1702934066061' style='position: relative'>
+    <noscript>
+        <a href='https://public.tableau.com/views/WorldAirportMap/Dashboard1?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link'>
+            <img alt='World Airport Map ' src='https://public.tableau.com/static/images/Wo/WorldAirportMap/Dashboard1/1_rss.png' style='border: none' />
+        </a>
+    </noscript>
+    <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+        <param name='embed_code_version' value='3' /> 
+        <param name='site_root' value='' />
+        <param name='name' value='WorldAirportMap/Dashboard1' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https://public.tableau.com/static/images/Wo/WorldAirportMap/Dashboard1/1.png' /> 
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+    </object>
+</div>
+<script type='text/javascript'>
+    var divElement = document.getElementById('viz1702934066061');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+    else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+    else { vizElement.style.width='100%';vizElement.style.height='777px';} 
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+</body>
+</html>
